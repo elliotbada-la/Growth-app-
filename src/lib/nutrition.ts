@@ -9,10 +9,10 @@ import type {
   UserSettings,
 } from './types';
 
-/** Protein goal in grams: body weight × the user's multiplier. */
+/** Protein goal in grams: body weight in pounds × grams per pound. */
 export function proteinGoal(settings: UserSettings): number {
-  const weight = settings.currentWeightKg > 0 ? settings.currentWeightKg : 0;
-  return Math.round(weight * settings.proteinMultiplier);
+  const weight = settings.currentWeightLb > 0 ? settings.currentWeightLb : 0;
+  return Math.round(weight * settings.proteinPerLb);
 }
 
 /** The resolved daily goal for a nutrient, accounting for body-weight and user-set goals. */

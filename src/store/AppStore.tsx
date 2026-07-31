@@ -48,7 +48,7 @@ interface AppStore {
   removeWater: (id: string) => void;
   logSleep: (entry: Omit<SleepEntry, 'id'>) => void;
   removeSleep: (id: string) => void;
-  logWeight: (weightKg: number, date?: string) => void;
+  logWeight: (weightLb: number, date?: string) => void;
   removeWeight: (id: string) => void;
   snoozeAlert: (key: NutrientKey) => void;
   resetDay: (date?: string) => void;
@@ -172,15 +172,15 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
     setData((d) => ({ ...d, sleepLog: d.sleepLog.filter((s) => s.id !== id) }));
   }, []);
 
-  const logWeight = useCallback((weightKg: number, forDate?: string) => {
+  const logWeight = useCallback((weightLb: number, forDate?: string) => {
     const entryDate = forDate ?? today();
     setData((d) => {
-      const created: WeightEntry = { id: newId(), date: entryDate, weightKg };
+      const created: WeightEntry = { id: newId(), date: entryDate, weightLb };
       const withoutSameDate = d.weightLog.filter((w) => w.date !== entryDate);
       const weightLog = [...withoutSameDate, created].sort((a, b) => a.date.localeCompare(b.date));
       const latest = weightLog[weightLog.length - 1];
       // The newest weight feeds the protein calculator.
-      return { ...d, weightLog, settings: { ...d.settings, currentWeightKg: latest.weightKg } };
+      return { ...d, weightLog, settings: { ...d.settings, currentWeightLb: latest.weightLb } };
     });
   }, []);
 
@@ -191,7 +191,7 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
       return {
         ...d,
         weightLog,
-        settings: latest ? { ...d.settings, currentWeightKg: latest.weightKg } : d.settings,
+        settings: latest ? { ...d.settings, currentWeightLb: latest.weightLb } : d.settings,
       };
     });
   }, []);
@@ -237,7 +237,7 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
     for (const s of data.sleepLog) {
       rows.push(['sleep', s.date, 'Sleep', String(s.hours), 'hours', s.notes ?? '']);
     }
-    for (const w of data.weightLog) rows.push(['weight', w.date, 'Weight', String(w.weightKg), 'kg', '']);
+    for (const w of data.weightLog) rows.push(['weight', w.date, 'Weight', String(w.weightLb), 'lb', '']);
     return rows
       .map((r) => r.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(','))
       .join('\n');

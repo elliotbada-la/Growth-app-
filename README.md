@@ -69,22 +69,22 @@ your food list, so a given product is only ever imported once and stays editable
 gaps, capped at the size of the gap so nothing wins by megadosing a single nutrient. Updates
 live as you log.
 
-**Protein calculator** — body-weight based, not a fixed number. Everyday mode uses 0.85 g/kg;
-lifting mode is adjustable between 1.2 and 1.7 g/kg (default 1.4). The goal recalculates
-whenever weight changes.
+**Protein calculator** — body-weight based, not a fixed number: **1 g of protein per pound of
+body weight**, adjustable between 0.5 and 1.5 g/lb in Settings. The goal recalculates whenever
+weight changes, and the newest weigh-in is always the source of truth.
 
 **Water** — 3.3 L default goal with quick-add buttons and a fill-up visual.
 
 **Sleep** — log bedtime/wake time or total hours, plus optional quality and notes. History
 chart over 7 or 30 nights against the 8–10 hour teen target band.
 
-**Growth** — weight log and trend line. Framed as growth tracking: no goal weight, no calorie
-restriction, no diet features. The newest weigh-in feeds the protein calculator.
+**Growth** — weight log and trend line, in pounds. Framed as growth tracking: no goal weight,
+no calorie restriction, no diet features. The newest weigh-in feeds the protein calculator.
 
 **Wrap up your day** — end-of-day view with streaks, a final water top-up, tonight's sleep
 plan and what to catch tomorrow.
 
-**Settings** — units, training mode, protein multiplier, water and sleep goals, theme
+**Settings** — weight, grams of protein per pound, water and sleep goals, AI lookup key, theme
 (light/dark/system), CSV export, reset today, erase all.
 
 ## Layout
@@ -105,7 +105,7 @@ src/
     openFoodFacts.ts  barcode + name lookup, unit conversion from the OFF schema
     storage.ts     local storage load & save
     dates.ts       local-date helpers
-    units.ts       kg/lb, ml/oz, hours
+    units.ts       weight, ml/oz and hour formatting
   store/AppStore.tsx   app state and every action
   components/          rings, bars, cards, nav
   screens/             the seven screens
@@ -118,6 +118,12 @@ Nutrient targets follow general DRI/AI guidance for ages 14–18 and are hard-co
 estimates, not lab measurements — they're editable in the app, and the file is a drop-in place
 to swap in a real source like USDA FoodData Central later. Values returned by the AI lookup are
 estimates too, and are equally editable once saved.
+
+The app works in **pounds throughout** — there is no kilogram option. Saves written by earlier
+builds stored weight in kilograms with a kg/lb toggle; `migrateToPounds` in
+`src/lib/storage.ts` converts those weights on load so no history is lost. The protein rate is
+deliberately reset to the current default rather than converted, since changing that rate is
+the point of the move to pounds.
 
 Open Food Facts stores every `*_100g` / `*_serving` figure normalised to grams, whatever unit a
 contributor originally typed (its `*_unit` field describes the raw entered value, not the

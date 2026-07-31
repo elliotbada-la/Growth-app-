@@ -6,7 +6,7 @@ import { useStore } from '../store/AppStore';
 import ProgressRing from './ProgressRing';
 
 export default function TodayCard() {
-  const { overall, progressByKey, data, settings } = useStore();
+  const { overall, progressByKey, data } = useStore();
 
   const water = progressByKey[WATER_KEY];
   const lastNight =
@@ -55,7 +55,7 @@ export default function TodayCard() {
         />
         <Stat
           label="Weight"
-          value={latestWeight ? formatWeight(latestWeight.weightKg, settings.weightUnit) : '—'}
+          value={latestWeight ? formatWeight(latestWeight.weightLb) : '—'}
           sub={latestWeight ? 'latest' : 'not logged'}
         />
       </dl>

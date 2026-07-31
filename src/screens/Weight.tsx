@@ -10,7 +10,6 @@ import {
 } from 'recharts';
 import { shortDateLabel, today } from '../lib/dates';
 import { proteinGoal } from '../lib/nutrition';
-import { toDisplayWeight, toStoredWeight } from '../lib/units';
 import { useStore } from '../store/AppStore';
 
 export default function Weight() {
@@ -18,30 +17,25 @@ export default function Weight() {
   const [value, setValue] = useState('');
   const [date, setDate] = useState(today());
 
-  const unit = settings.weightUnit;
-
   const chartData = useMemo(
     () =>
       data.weightLog.map((w) => ({
         date: w.date,
         label: shortDateLabel(w.date),
-        weight: Number(toDisplayWeight(w.weightKg, unit).toFixed(1)),
+        weight: Number(w.weightLb.toFixed(1)),
       })),
-    [data.weightLog, unit],
+    [data.weightLog],
   );
 
   const latest = data.weightLog[data.weightLog.length - 1];
   const first = data.weightLog[0];
-  const change =
-    latest && first && latest.id !== first.id
-      ? toDisplayWeight(latest.weightKg, unit) - toDisplayWeight(first.weightKg, unit)
-      : 0;
+  const change = latest && first && latest.id !== first.id ? latest.weightLb - first.weightLb : 0;
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     const entered = Number(value);
     if (!(entered > 0)) return;
-    logWeight(Number(toStoredWeight(entered, unit).toFixed(2)), date);
+    logWeight(Number(entered.toFixed(1)), date);
     setValue('');
   };
 
@@ -60,7 +54,7 @@ export default function Weight() {
                 Current
               </p>
               <p className="text-xl font-bold tabular-nums">
-                {toDisplayWeight(latest.weightKg, unit).toFixed(1)} {unit}
+                {latest.weightLb.toFixed(1)} lb
               </p>
             </div>
             <div className="rounded-xl bg-slate-50 py-2.5 dark:bg-slate-800/60">
@@ -69,7 +63,7 @@ export default function Weight() {
               </p>
               <p className="text-xl font-bold tabular-nums">
                 {change > 0 ? '+' : ''}
-                {change.toFixed(1)} {unit}
+                {change.toFixed(1)} lb
               </p>
             </div>
           </div>
@@ -86,8 +80,8 @@ export default function Weight() {
             min="0"
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            placeholder={`Weight in ${unit}`}
-            aria-label={`Weight in ${unit}`}
+            placeholder="Weight in lb"
+            aria-label="Weight in pounds"
             className="field flex-1"
             required
           />
@@ -105,7 +99,7 @@ export default function Weight() {
         </button>
         <p className="text-xs text-slate-400 dark:text-slate-500">
           Your newest weigh-in sets your protein goal automatically — right now that's{' '}
-          <strong>{proteinGoal(settings)} g</strong> a day at {settings.proteinMultiplier} g/kg.
+          <strong>{proteinGoal(settings)} g</strong> a day at {settings.proteinPerLb} g per pound.
         </p>
       </form>
 
@@ -132,7 +126,7 @@ export default function Weight() {
                   className="text-slate-400"
                 />
                 <Tooltip
-                  formatter={(v: number) => [`${v} ${unit}`, 'Weight']}
+                  formatter={(v: number) => [`${v} lb`, 'Weight']}
                   contentStyle={{ borderRadius: 12, fontSize: 12 }}
                 />
                 <Line
@@ -157,7 +151,7 @@ export default function Weight() {
               <li key={w.id} className="flex items-center justify-between py-2 text-sm">
                 <span>{shortDateLabel(w.date)}</span>
                 <span className="font-semibold tabular-nums">
-                  {toDisplayWeight(w.weightKg, unit).toFixed(1)} {unit}
+                  {w.weightLb.toFixed(1)} lb
                 </span>
                 <button
                   type="button"

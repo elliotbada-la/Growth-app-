@@ -37,15 +37,14 @@ export const GLASS_ML = 250;
 export const DEFAULT_SLEEP_MIN_HOURS = 8;
 export const DEFAULT_SLEEP_MAX_HOURS = 10;
 
-/** Weight. */
+/** Weight. The app works in pounds; this is only used to migrate older saved data. */
 export const LB_PER_KG = 2.20462;
-export const DEFAULT_WEIGHT_KG = 60;
+export const DEFAULT_WEIGHT_LB = 130;
 
-/** Protein multipliers. */
-export const PROTEIN_MULTIPLIER_DEFAULT = 0.85;
-export const PROTEIN_MULTIPLIER_LIFTING_DEFAULT = 1.4;
-export const PROTEIN_MULTIPLIER_LIFTING_MIN = 1.2;
-export const PROTEIN_MULTIPLIER_LIFTING_MAX = 1.7;
+/** Protein: grams per pound of body weight. */
+export const PROTEIN_PER_LB_DEFAULT = 1;
+export const PROTEIN_PER_LB_MIN = 0.5;
+export const PROTEIN_PER_LB_MAX = 1.5;
 
 /** How many foods the Best Foods engine recommends. */
 export const MAX_RECOMMENDATIONS = 8;

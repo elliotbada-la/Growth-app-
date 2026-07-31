@@ -49,7 +49,7 @@ export interface SleepEntry {
 export interface WeightEntry {
   id: string;
   date: string;
-  weightKg: number;
+  weightLb: number;
 }
 
 export interface WaterEntry {
@@ -59,16 +59,12 @@ export interface WaterEntry {
   loggedAt: number;
 }
 
-export type TrainingMode = 'default' | 'lifting';
-export type WeightUnit = 'kg' | 'lb';
 export type Theme = 'light' | 'dark' | 'system';
 
 export interface UserSettings {
-  weightUnit: WeightUnit;
-  currentWeightKg: number;
-  trainingMode: TrainingMode;
-  /** g of protein per kg of body weight. 0.85 default, 1.2–1.7 when lifting. */
-  proteinMultiplier: number;
+  currentWeightLb: number;
+  /** Grams of protein per pound of body weight. 1 g/lb by default. */
+  proteinPerLb: number;
   waterGoalMl: number;
   sleepGoalMinHours: number;
   sleepGoalMaxHours: number;

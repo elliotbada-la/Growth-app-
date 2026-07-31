@@ -1,40 +1,19 @@
 import { useState } from 'react';
 import Disclaimer from '../components/Disclaimer';
 import { loadApiKey, saveApiKey } from '../lib/aiLookup';
-import {
-  PROTEIN_MULTIPLIER_DEFAULT,
-  PROTEIN_MULTIPLIER_LIFTING_DEFAULT,
-  PROTEIN_MULTIPLIER_LIFTING_MAX,
-  PROTEIN_MULTIPLIER_LIFTING_MIN,
-} from '../lib/constants';
+import { PROTEIN_PER_LB_MAX, PROTEIN_PER_LB_MIN } from '../lib/constants';
 import { proteinGoal } from '../lib/nutrition';
-import { toDisplayWeight, toStoredWeight } from '../lib/units';
-import type { Theme, TrainingMode, WeightUnit } from '../lib/types';
+import type { Theme } from '../lib/types';
 import { useStore } from '../store/AppStore';
 
 export default function Settings() {
   const { settings, updateSettings, logWeight, resetDay, resetAll, exportCsv } = useStore();
-  const [weightInput, setWeightInput] = useState(() =>
-    toDisplayWeight(settings.currentWeightKg, settings.weightUnit).toFixed(1),
-  );
+  const [weightInput, setWeightInput] = useState(() => settings.currentWeightLb.toFixed(1));
   const [confirmReset, setConfirmReset] = useState(false);
-
-  const setUnit = (unit: WeightUnit) => {
-    updateSettings({ weightUnit: unit });
-    setWeightInput(toDisplayWeight(settings.currentWeightKg, unit).toFixed(1));
-  };
-
-  const setMode = (mode: TrainingMode) => {
-    updateSettings({
-      trainingMode: mode,
-      proteinMultiplier:
-        mode === 'lifting' ? PROTEIN_MULTIPLIER_LIFTING_DEFAULT : PROTEIN_MULTIPLIER_DEFAULT,
-    });
-  };
 
   const commitWeight = () => {
     const entered = Number(weightInput);
-    if (entered > 0) logWeight(Number(toStoredWeight(entered, settings.weightUnit).toFixed(2)));
+    if (entered > 0) logWeight(Number(entered.toFixed(1)));
   };
 
   const downloadCsv = () => {
@@ -52,26 +31,8 @@ export default function Settings() {
       <section className="card space-y-3">
         <h3 className="section-title">You</h3>
 
-        <div>
-          <span className="text-xs text-slate-500 dark:text-slate-400">Weight unit</span>
-          <div className="mt-1 flex gap-2">
-            {(['kg', 'lb'] as const).map((u) => (
-              <button
-                key={u}
-                type="button"
-                onClick={() => setUnit(u)}
-                className={`btn flex-1 ${settings.weightUnit === u ? 'btn-primary' : 'btn-ghost'}`}
-              >
-                {u}
-              </button>
-            ))}
-          </div>
-        </div>
-
         <label className="block">
-          <span className="text-xs text-slate-500 dark:text-slate-400">
-            Current weight ({settings.weightUnit})
-          </span>
+          <span className="text-xs text-slate-500 dark:text-slate-400">Current weight (lb)</span>
           <div className="mt-1 flex gap-2">
             <input
               type="number"
@@ -92,51 +53,30 @@ export default function Settings() {
       <section className="card space-y-3">
         <h3 className="section-title">Protein goal</h3>
 
-        <div className="flex gap-2">
-          <button
-            type="button"
-            onClick={() => setMode('default')}
-            className={`btn flex-1 ${settings.trainingMode === 'default' ? 'btn-primary' : 'btn-ghost'}`}
-          >
-            Everyday
-          </button>
-          <button
-            type="button"
-            onClick={() => setMode('lifting')}
-            className={`btn flex-1 ${settings.trainingMode === 'lifting' ? 'btn-primary' : 'btn-ghost'}`}
-          >
-            Lifting / training
-          </button>
-        </div>
+        <p className="text-xs text-slate-500 dark:text-slate-400">
+          One gram of protein per pound of body weight. Nudge it if you want a different rate.
+        </p>
 
-        {settings.trainingMode === 'lifting' ? (
-          <label className="block">
-            <span className="text-xs text-slate-500 dark:text-slate-400">
-              Grams per kg: <strong>{settings.proteinMultiplier.toFixed(2)}</strong> (
-              {PROTEIN_MULTIPLIER_LIFTING_MIN}–{PROTEIN_MULTIPLIER_LIFTING_MAX})
-            </span>
-            <input
-              type="range"
-              min={PROTEIN_MULTIPLIER_LIFTING_MIN}
-              max={PROTEIN_MULTIPLIER_LIFTING_MAX}
-              step={0.05}
-              value={settings.proteinMultiplier}
-              onChange={(e) => updateSettings({ proteinMultiplier: Number(e.target.value) })}
-              className="mt-2 w-full accent-brand-600"
-            />
-          </label>
-        ) : (
-          <p className="text-xs text-slate-500 dark:text-slate-400">
-            Everyday mode uses {PROTEIN_MULTIPLIER_DEFAULT} g per kg — the minimum for healthy
-            growth.
-          </p>
-        )}
+        <label className="block">
+          <span className="text-xs text-slate-500 dark:text-slate-400">
+            Grams per pound: <strong>{settings.proteinPerLb.toFixed(2)}</strong>
+          </span>
+          <input
+            type="range"
+            min={PROTEIN_PER_LB_MIN}
+            max={PROTEIN_PER_LB_MAX}
+            step={0.05}
+            value={settings.proteinPerLb}
+            onChange={(e) => updateSettings({ proteinPerLb: Number(e.target.value) })}
+            className="mt-2 w-full accent-brand-600"
+          />
+        </label>
 
         <div className="rounded-xl bg-slate-50 p-3 text-center dark:bg-slate-800/60">
           <p className="text-2xl font-bold tabular-nums">{proteinGoal(settings)} g</p>
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            daily protein goal · {settings.currentWeightKg.toFixed(1)} kg ×{' '}
-            {settings.proteinMultiplier}
+            daily protein goal · {settings.currentWeightLb.toFixed(1)} lb ×{' '}
+            {settings.proteinPerLb} g
           </p>
         </div>
       </section>
