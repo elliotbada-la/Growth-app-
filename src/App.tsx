@@ -25,19 +25,30 @@ export default function App() {
   const { settings } = useStore();
   const [screen, setScreen] = useState<Screen>('home');
 
-  // Apply the theme choice to <html> so Tailwind's dark variant picks it up.
+  // Apply the theme choice to <html> so Tailwind's dark variant picks it up. On "system" we
+  // follow the OS, unless a host page (e.g. an embed) has stamped data-theme on the root —
+  // then that wins, so the app matches whatever it's embedded in.
   useEffect(() => {
     const root = document.documentElement;
     const media = window.matchMedia('(prefers-color-scheme: dark)');
     const apply = () => {
-      const dark = settings.theme === 'dark' || (settings.theme === 'system' && media.matches);
+      const hostTheme = root.dataset.theme;
+      const systemIsDark = hostTheme ? hostTheme === 'dark' : media.matches;
+      const dark = settings.theme === 'dark' || (settings.theme === 'system' && systemIsDark);
       root.classList.toggle('dark', dark);
     };
     apply();
-    if (settings.theme === 'system') {
-      media.addEventListener('change', apply);
-      return () => media.removeEventListener('change', apply);
-    }
+
+    if (settings.theme !== 'system') return;
+
+    media.addEventListener('change', apply);
+    // Only watch data-theme — watching every attribute would re-fire on our own class toggle.
+    const observer = new MutationObserver(apply);
+    observer.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => {
+      media.removeEventListener('change', apply);
+      observer.disconnect();
+    };
   }, [settings.theme]);
 
   // Jumping between screens should start at the top.
