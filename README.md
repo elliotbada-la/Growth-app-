@@ -19,7 +19,10 @@ npm run build    # production build into dist/
 npm run preview  # serve the production build
 ```
 
-Stack: React 19 + TypeScript + Vite, Tailwind CSS v4, Recharts.
+Stack: React 19 + TypeScript + Vite, Tailwind CSS v4, Recharts, ZXing (barcode decoding).
+
+`npm run build:single` additionally bundles the app into one self-contained HTML file at
+`dist/growthtracker.html`, for hosts that can't load external assets.
 
 ## What's in it
 
@@ -41,11 +44,26 @@ weighted to surface first. Every threshold lives in `src/lib/constants.ts`.
 or delete anything logged today. Any food's nutrient values can be edited, and custom foods can
 be added by hand and reused.
 
-**AI food lookup** — type any food or drink that isn't in the database and Claude estimates its
-per-serving nutrients across the full nutrient set, saving it to your food list for reuse. Needs
-an Anthropic API key (added in Settings) and an internet connection; the request goes straight
-from the browser to the Anthropic API, so the key stays on your device and usage bills to your
-own account. Everything else in the app keeps working offline without it.
+**Barcode scanning & Open Food Facts** — scan a packaged product's barcode, or search Open
+Food Facts by brand, and its nutrients import in one tap. Open Food Facts is a free, open,
+CORS-enabled database of millions of products needing no API key or account. The scanner offers
+three routes because no single one works on every phone: a live camera stream (needs HTTPS or
+localhost), a photo capture that decodes a still (the iOS Safari path), and typing the digits.
+The decoder is fetched only on the first scan, so it costs nothing on a normal app open.
+
+**AI food lookup** — for anything with no barcode (home cooking, restaurant meals), describe it
+and Claude estimates its per-serving nutrients across the full nutrient set. Needs an Anthropic
+API key (added in Settings) and an internet connection; the request goes straight from the
+browser to the Anthropic API, so the key stays on your device and usage bills to your own
+account.
+
+Both import routes, plus barcode scanning, need network access. Everything else — logging,
+targets, focus alerts, sleep, water, weight — keeps working offline.
+
+**Import review** — nothing from an external source reaches the food log unreviewed. Every
+import shows the serving, its source, and the values it will add before you accept it, and
+flags any nutrient that comes back implausibly high for a single serving. Imports are saved to
+your food list, so a given product is only ever imported once and stays editable.
 
 **Best foods today** — ranks the database by how well each food closes the day's remaining
 gaps, capped at the size of the gap so nothing wins by megadosing a single nutrient. Updates
@@ -84,6 +102,7 @@ src/
     focus.ts       focus alert engine
     streaks.ts     water / protein / sleep streaks
     aiLookup.ts    Claude-backed nutrient estimation for arbitrary foods
+    openFoodFacts.ts  barcode + name lookup, unit conversion from the OFF schema
     storage.ts     local storage load & save
     dates.ts       local-date helpers
     units.ts       kg/lb, ml/oz, hours
@@ -99,3 +118,10 @@ Nutrient targets follow general DRI/AI guidance for ages 14–18 and are hard-co
 estimates, not lab measurements — they're editable in the app, and the file is a drop-in place
 to swap in a real source like USDA FoodData Central later. Values returned by the AI lookup are
 estimates too, and are equally editable once saved.
+
+Open Food Facts stores every `*_100g` / `*_serving` figure normalised to grams, whatever unit a
+contributor originally typed (its `*_unit` field describes the raw entered value, not the
+normalised one). `src/lib/openFoodFacts.ts` converts from grams into each nutrient's display
+unit; that table and `fromGrams` are the only places to look if imported numbers ever land off
+by a factor of 1000. Open Food Facts is crowd-sourced, so per-product completeness varies —
+missing nutrients import as zero rather than being guessed.

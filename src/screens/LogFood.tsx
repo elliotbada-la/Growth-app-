@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { NUTRIENT_TARGETS, NUTRIENTS_BY_KEY } from '../data/nutrients';
-import { loadApiKey, lookupFoodWithAi } from '../lib/aiLookup';
+import { AiLookupPanel, OpenFoodFactsPanel } from '../components/FoodImport';
+import { roundServings as round, StepperButton } from '../components/Stepper';
 import { formatAmount } from '../lib/nutrition';
 import type { FoodItem, NutrientKey } from '../lib/types';
 import { useStore } from '../store/AppStore';
@@ -80,6 +81,8 @@ export default function LogFood() {
         </button>
       </section>
 
+      <OpenFoodFactsPanel />
+
       <AiLookupPanel />
 
       {showCustom && <CustomFoodForm onDone={() => setShowCustom(false)} />}
@@ -152,30 +155,6 @@ export default function LogFood() {
   );
 }
 
-function round(n: number): number {
-  return Math.round(n * 100) / 100;
-}
-
-function StepperButton({
-  children,
-  label,
-  onClick,
-}: {
-  children: React.ReactNode;
-  label: string;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-label={label}
-      className="h-7 w-7 rounded-lg bg-slate-100 text-sm font-bold text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
-    >
-      {children}
-    </button>
-  );
-}
 
 /** Bottom sheet for choosing a serving count, with an inline editor for the food's values. */
 function AddFoodSheet({
@@ -307,138 +286,6 @@ function AddFoodSheet({
   );
 }
 
-/**
- * Type any food or drink and have Claude estimate its nutrients, for anything the
- * bundled database doesn't cover. Needs the user's own API key and real network
- * access, so it degrades to a clear message rather than failing silently.
- */
-function AiLookupPanel() {
-  const { addCustomFood, logFood } = useStore();
-  const [query, setQuery] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading'>('idle');
-  const [error, setError] = useState('');
-  const [result, setResult] = useState<{ food: Omit<FoodItem, 'id'>; note: string } | null>(null);
-  const [servings, setServings] = useState(1);
-  const hasKey = Boolean(loadApiKey());
-
-  const run = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!query.trim()) return;
-    setStatus('loading');
-    setError('');
-    setResult(null);
-    try {
-      const found = await lookupFoodWithAi(query.trim(), loadApiKey());
-      setResult(found);
-      setServings(1);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Lookup failed.');
-    } finally {
-      setStatus('idle');
-    }
-  };
-
-  const save = () => {
-    if (!result) return;
-    const created = addCustomFood({
-      name: result.food.name,
-      emoji: result.food.emoji,
-      servingLabel: result.food.servingLabel,
-      nutrients: result.food.nutrients,
-    });
-    logFood(created.id, servings);
-    setResult(null);
-    setQuery('');
-  };
-
-  const notable = result
-    ? NUTRIENT_TARGETS.filter((t) => (result.food.nutrients[t.key] ?? 0) > 0).slice(0, 8)
-    : [];
-
-  return (
-    <section className="card">
-      <h3 className="section-title">Can't find it? Ask AI</h3>
-      <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-        Describe any food or drink and Claude will estimate its nutrients. Saved to your food list
-        so you can reuse it, and you can edit anything that looks off.
-      </p>
-
-      <form onSubmit={run} className="mt-3 flex gap-2">
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="chicken shawarma wrap, bubble tea…"
-          aria-label="Food or drink to look up"
-          className="field flex-1"
-        />
-        <button type="submit" disabled={status === 'loading' || !query.trim()} className="btn btn-primary">
-          {status === 'loading' ? 'Looking…' : '✨ Look up'}
-        </button>
-      </form>
-
-      {!hasKey && (
-        <p className="mt-2 text-xs text-amber-600 dark:text-amber-400">
-          Add your Anthropic API key in Settings to turn this on.
-        </p>
-      )}
-
-      {error && (
-        <p className="mt-2 rounded-xl bg-rose-50 p-2.5 text-xs text-rose-700 dark:bg-rose-950/40 dark:text-rose-300">
-          {error}
-        </p>
-      )}
-
-      {result && (
-        <div className="mt-3 rounded-xl bg-slate-50 p-3 dark:bg-slate-800/60">
-          <p className="text-sm font-semibold">
-            <span aria-hidden="true">{result.food.emoji}</span> {result.food.name}
-          </p>
-          <p className="text-xs text-slate-500 dark:text-slate-400">{result.food.servingLabel}</p>
-          {result.note && (
-            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{result.note}</p>
-          )}
-
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {notable.map((t) => (
-              <span
-                key={t.key}
-                className="rounded-full bg-white px-2 py-1 text-[11px] font-medium ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-700"
-              >
-                {t.label} {formatAmount((result.food.nutrients[t.key] ?? 0) * servings)} {t.unit}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-3 flex items-center justify-center gap-4">
-            <StepperButton
-              label="Fewer servings"
-              onClick={() => setServings((s) => Math.max(0.5, round(s - 0.5)))}
-            >
-              −
-            </StepperButton>
-            <span className="text-lg font-bold tabular-nums">{servings}</span>
-            <StepperButton label="More servings" onClick={() => setServings((s) => round(s + 0.5))}>
-              +
-            </StepperButton>
-          </div>
-
-          <p className="mt-2 text-[11px] text-slate-400 dark:text-slate-500">
-            These are estimates, not lab values — tap the food in your list later to correct them.
-          </p>
-
-          <div className="mt-3 flex gap-2">
-            <button type="button" onClick={() => setResult(null)} className="btn btn-ghost flex-1">
-              Discard
-            </button>
-            <button type="button" onClick={save} className="btn btn-primary flex-1">
-              Save & log
-            </button>
-          </div>
-        </div>
-      )}
-    </section>
-  );
-}
 
 /** Type a food name and its nutrient amounts; it's saved to the database for reuse. */
 function CustomFoodForm({ onDone }: { onDone: () => void }) {
