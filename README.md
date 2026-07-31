@@ -37,9 +37,15 @@ weight, and the eight main-focus nutrients get progress rings.
 Each alert names specific foods that fix it and can be snoozed. Main-focus nutrients are
 weighted to surface first. Every threshold lives in `src/lib/constants.ts`.
 
-**Food logging** — search the bundled database, add by servings, edit or delete anything
-logged today. Any food's nutrient values can be edited, and custom foods can be added by hand
-and reused.
+**Food logging** — search the bundled database of 90 foods and drinks, add by servings, edit
+or delete anything logged today. Any food's nutrient values can be edited, and custom foods can
+be added by hand and reused.
+
+**AI food lookup** — type any food or drink that isn't in the database and Claude estimates its
+per-serving nutrients across the full nutrient set, saving it to your food list for reuse. Needs
+an Anthropic API key (added in Settings) and an internet connection; the request goes straight
+from the browser to the Anthropic API, so the key stays on your device and usage bills to your
+own account. Everything else in the app keeps working offline without it.
 
 **Best foods today** — ranks the database by how well each food closes the day's remaining
 gaps, capped at the size of the gap so nothing wins by megadosing a single nutrient. Updates
@@ -69,7 +75,7 @@ plan and what to catch tomorrow.
 src/
   data/
     nutrients.ts   daily targets for all 30 nutrients
-    foods.json     40-food seed database, per-serving values
+    foods.json     90-food seed database, per-serving values
   lib/
     constants.ts   every tunable threshold
     types.ts       data model
@@ -77,6 +83,7 @@ src/
     recommend.ts   best-foods ranking
     focus.ts       focus alert engine
     streaks.ts     water / protein / sleep streaks
+    aiLookup.ts    Claude-backed nutrient estimation for arbitrary foods
     storage.ts     local storage load & save
     dates.ts       local-date helpers
     units.ts       kg/lb, ml/oz, hours
@@ -90,4 +97,5 @@ src/
 Nutrient targets follow general DRI/AI guidance for ages 14–18 and are hard-coded in
 `src/data/nutrients.ts`. Food values in `src/data/foods.json` are reasonable per-serving
 estimates, not lab measurements — they're editable in the app, and the file is a drop-in place
-to swap in a real source like USDA FoodData Central later.
+to swap in a real source like USDA FoodData Central later. Values returned by the AI lookup are
+estimates too, and are equally editable once saved.

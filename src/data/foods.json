@@ -493,6 +493,593 @@
     }
   },
   {
+    "id": "turkey-breast",
+    "name": "Turkey breast",
+    "emoji": "🦃",
+    "servingLabel": "100 g cooked",
+    "nutrients": {
+      "protein": 29, "calcium": 12, "magnesium": 28, "zinc": 1.7, "iron": 1.4, "niacin": 6.3,
+      "riboflavin": 0.15, "vitaminB6": 0.5, "vitaminB12": 0.4, "pantothenicAcid": 0.8, "biotin": 2,
+      "folate": 6, "choline": 70, "selenium": 27, "copper": 40, "potassium": 250, "phosphorus": 210,
+      "iodine": 5, "chromium": 1, "molybdenum": 2
+    }
+  },
+  {
+    "id": "pork-loin",
+    "name": "Pork loin",
+    "emoji": "🥓",
+    "servingLabel": "100 g cooked",
+    "nutrients": {
+      "protein": 27, "vitaminD": 0.6, "calcium": 15, "magnesium": 28, "zinc": 2.1, "iron": 0.9,
+      "thiamine": 0.9, "riboflavin": 0.3, "niacin": 6.5, "pantothenicAcid": 0.9, "vitaminB6": 0.5,
+      "biotin": 3, "folate": 5, "vitaminB12": 0.6, "choline": 80, "selenium": 38, "copper": 70,
+      "potassium": 420, "phosphorus": 220, "chromium": 2, "molybdenum": 2
+    }
+  },
+  {
+    "id": "lamb",
+    "name": "Lamb",
+    "emoji": "🍖",
+    "servingLabel": "100 g cooked",
+    "nutrients": {
+      "protein": 25, "calcium": 16, "magnesium": 25, "zinc": 4.5, "iron": 1.9, "niacin": 6,
+      "riboflavin": 0.25, "thiamine": 0.1, "vitaminB6": 0.13, "vitaminB12": 2.7,
+      "pantothenicAcid": 0.6, "biotin": 3, "folate": 18, "choline": 90, "selenium": 25, "copper": 110,
+      "potassium": 310, "phosphorus": 190, "molybdenum": 2
+    }
+  },
+  {
+    "id": "ground-turkey",
+    "name": "Ground turkey",
+    "emoji": "🦃",
+    "servingLabel": "100 g cooked",
+    "nutrients": {
+      "protein": 27, "calcium": 25, "magnesium": 26, "zinc": 3, "iron": 1.5, "niacin": 6,
+      "riboflavin": 0.2, "vitaminB6": 0.5, "vitaminB12": 1.2, "pantothenicAcid": 0.9, "biotin": 2,
+      "folate": 8, "choline": 75, "selenium": 25, "copper": 60, "potassium": 260, "phosphorus": 220,
+      "molybdenum": 2
+    }
+  },
+  {
+    "id": "shrimp",
+    "name": "Shrimp",
+    "emoji": "🦐",
+    "servingLabel": "100 g cooked",
+    "nutrients": {
+      "protein": 24, "vitaminD": 0.1, "calcium": 70, "magnesium": 35, "zinc": 1.6, "omega3": 0.3,
+      "iron": 0.5, "vitaminA": 54, "vitaminE": 1.2, "niacin": 2.2, "vitaminB6": 0.16,
+      "vitaminB12": 1.7, "pantothenicAcid": 0.3, "biotin": 1, "folate": 19, "choline": 80,
+      "iodine": 35, "selenium": 40, "copper": 250, "potassium": 260, "phosphorus": 200,
+      "molybdenum": 1
+    }
+  },
+  {
+    "id": "cod",
+    "name": "Cod",
+    "emoji": "🐟",
+    "servingLabel": "100 g cooked",
+    "nutrients": {
+      "protein": 23, "vitaminD": 1.2, "calcium": 18, "magnesium": 32, "zinc": 0.5, "omega3": 0.2,
+      "iron": 0.4, "vitaminA": 12, "vitaminE": 0.7, "niacin": 2.5, "vitaminB6": 0.25,
+      "vitaminB12": 1, "pantothenicAcid": 0.2, "biotin": 2, "folate": 8, "choline": 75,
+      "iodine": 110, "selenium": 33, "copper": 30, "potassium": 400, "phosphorus": 200
+    }
+  },
+  {
+    "id": "mackerel",
+    "name": "Mackerel",
+    "emoji": "🐟",
+    "servingLabel": "100 g cooked",
+    "nutrients": {
+      "protein": 24, "vitaminD": 16, "calcium": 15, "magnesium": 76, "zinc": 0.9, "omega3": 2.6,
+      "iron": 1.6, "vitaminA": 54, "vitaminE": 1.5, "riboflavin": 0.4, "niacin": 6,
+      "vitaminB6": 0.4, "vitaminB12": 8.7, "pantothenicAcid": 0.9, "biotin": 5, "folate": 2,
+      "choline": 78, "iodine": 25, "selenium": 44, "copper": 80, "potassium": 400, "phosphorus": 240
+    }
+  },
+  {
+    "id": "egg-whites",
+    "name": "Egg whites",
+    "emoji": "🥚",
+    "servingLabel": "2 large (66 g)",
+    "nutrients": {
+      "protein": 7.2, "calcium": 5, "magnesium": 7, "zinc": 0.02, "iron": 0.05, "riboflavin": 0.3,
+      "niacin": 0.1, "pantothenicAcid": 0.1, "folate": 3, "vitaminB12": 0.06, "choline": 1,
+      "selenium": 4, "potassium": 110, "phosphorus": 10, "molybdenum": 3
+    }
+  },
+  {
+    "id": "protein-powder",
+    "name": "Whey protein powder",
+    "emoji": "🥤",
+    "servingLabel": "1 scoop (30 g)",
+    "nutrients": {
+      "protein": 24, "calcium": 120, "magnesium": 30, "zinc": 1.2, "iron": 0.8, "riboflavin": 0.3,
+      "vitaminB12": 0.6, "pantothenicAcid": 0.5, "folate": 10, "choline": 20, "selenium": 8,
+      "potassium": 180, "phosphorus": 150, "iodine": 15
+    }
+  },
+  {
+    "id": "chocolate-milk",
+    "name": "Chocolate milk",
+    "emoji": "🥛",
+    "servingLabel": "1 cup (240 ml)",
+    "nutrients": {
+      "protein": 8, "vitaminD": 2.5, "calcium": 280, "magnesium": 33, "zinc": 1, "iron": 0.6,
+      "vitaminA": 145, "vitaminE": 0.15, "thiamine": 0.09, "riboflavin": 0.4, "niacin": 0.3,
+      "pantothenicAcid": 0.8, "vitaminB6": 0.1, "biotin": 4, "folate": 12, "vitaminB12": 0.9,
+      "choline": 43, "iodine": 80, "selenium": 8, "copper": 150, "manganese": 0.3, "potassium": 420,
+      "phosphorus": 250, "molybdenum": 7
+    }
+  },
+  {
+    "id": "soy-milk",
+    "name": "Soy milk",
+    "emoji": "🥛",
+    "servingLabel": "1 cup (240 ml)",
+    "nutrients": {
+      "protein": 7, "vitaminD": 2.9, "calcium": 300, "magnesium": 39, "zinc": 0.6, "omega3": 0.1,
+      "iron": 1.1, "vitaminA": 150, "vitaminE": 1.5, "vitaminK": 7, "thiamine": 0.09,
+      "riboflavin": 0.5, "niacin": 1.4, "pantothenicAcid": 0.4, "vitaminB6": 0.1, "folate": 24,
+      "vitaminB12": 1.2, "choline": 40, "selenium": 5, "copper": 300, "manganese": 0.3,
+      "potassium": 300, "phosphorus": 130, "molybdenum": 10
+    }
+  },
+  {
+    "id": "almond-milk",
+    "name": "Almond milk",
+    "emoji": "🥛",
+    "servingLabel": "1 cup (240 ml)",
+    "nutrients": {
+      "protein": 1, "vitaminD": 2.5, "calcium": 450, "magnesium": 17, "zinc": 0.2, "iron": 0.4,
+      "vitaminA": 150, "vitaminE": 6.3, "riboflavin": 0.1, "folate": 3, "vitaminB12": 0.6,
+      "selenium": 0.4, "copper": 30, "manganese": 0.1, "potassium": 160, "phosphorus": 25
+    }
+  },
+  {
+    "id": "oat-milk",
+    "name": "Oat milk",
+    "emoji": "🥛",
+    "servingLabel": "1 cup (240 ml)",
+    "nutrients": {
+      "protein": 3, "vitaminD": 3.6, "calcium": 350, "magnesium": 25, "zinc": 0.5, "iron": 0.4,
+      "vitaminA": 150, "riboflavin": 0.4, "vitaminB12": 1.2, "folate": 15, "potassium": 390,
+      "phosphorus": 270, "manganese": 0.4, "copper": 60
+    }
+  },
+  {
+    "id": "kefir",
+    "name": "Kefir",
+    "emoji": "🥛",
+    "servingLabel": "1 cup (240 ml)",
+    "nutrients": {
+      "protein": 9, "vitaminD": 2.5, "calcium": 300, "magnesium": 30, "zinc": 1, "iron": 0.1,
+      "vitaminA": 110, "thiamine": 0.09, "riboflavin": 0.4, "niacin": 0.2, "pantothenicAcid": 0.9,
+      "vitaminB6": 0.1, "biotin": 4, "folate": 12, "vitaminB12": 1, "choline": 40, "iodine": 60,
+      "selenium": 8, "potassium": 380, "phosphorus": 250, "molybdenum": 7
+    }
+  },
+  {
+    "id": "mozzarella",
+    "name": "Mozzarella",
+    "emoji": "🧀",
+    "servingLabel": "28 g",
+    "nutrients": {
+      "protein": 6.3, "vitaminD": 0.1, "calcium": 143, "magnesium": 6, "zinc": 0.8, "iron": 0.1,
+      "vitaminA": 50, "riboflavin": 0.08, "vitaminB12": 0.6, "pantothenicAcid": 0.05, "folate": 2,
+      "choline": 5, "iodine": 10, "selenium": 4, "potassium": 20, "phosphorus": 105
+    }
+  },
+  {
+    "id": "parmesan",
+    "name": "Parmesan",
+    "emoji": "🧀",
+    "servingLabel": "15 g (2 tbsp grated)",
+    "nutrients": {
+      "protein": 5.3, "calcium": 190, "magnesium": 6, "zinc": 0.5, "iron": 0.1, "vitaminA": 35,
+      "riboflavin": 0.05, "vitaminB12": 0.3, "folate": 1, "choline": 3, "selenium": 4,
+      "potassium": 20, "phosphorus": 120
+    }
+  },
+  {
+    "id": "hummus",
+    "name": "Hummus",
+    "emoji": "🫓",
+    "servingLabel": "2 tbsp (30 g)",
+    "nutrients": {
+      "protein": 2, "calcium": 20, "magnesium": 18, "zinc": 0.4, "iron": 0.7, "vitaminE": 0.3,
+      "vitaminK": 2, "thiamine": 0.05, "niacin": 0.2, "vitaminB6": 0.04, "folate": 20, "choline": 8,
+      "selenium": 1, "copper": 100, "manganese": 0.2, "potassium": 70, "phosphorus": 45,
+      "molybdenum": 12
+    }
+  },
+  {
+    "id": "white-rice",
+    "name": "White rice",
+    "emoji": "🍚",
+    "servingLabel": "1 cup cooked (186 g)",
+    "nutrients": {
+      "protein": 4.3, "calcium": 16, "magnesium": 19, "zinc": 0.8, "iron": 1.9, "thiamine": 0.26,
+      "riboflavin": 0.02, "niacin": 2.3, "pantothenicAcid": 0.4, "vitaminB6": 0.15, "biotin": 2,
+      "folate": 91, "choline": 4, "selenium": 12, "copper": 80, "manganese": 0.7, "potassium": 55,
+      "phosphorus": 68, "molybdenum": 20
+    }
+  },
+  {
+    "id": "whole-wheat-pasta",
+    "name": "Whole-wheat pasta",
+    "emoji": "🍝",
+    "servingLabel": "1 cup cooked (140 g)",
+    "nutrients": {
+      "protein": 7.5, "calcium": 21, "magnesium": 42, "zinc": 1.1, "omega3": 0.04, "iron": 1.5,
+      "vitaminE": 0.4, "thiamine": 0.15, "riboflavin": 0.06, "niacin": 1, "pantothenicAcid": 0.4,
+      "vitaminB6": 0.1, "biotin": 4, "folate": 7, "choline": 25, "selenium": 36, "copper": 230,
+      "manganese": 1.9, "potassium": 62, "phosphorus": 125, "molybdenum": 25
+    }
+  },
+  {
+    "id": "bagel",
+    "name": "Bagel",
+    "emoji": "🥯",
+    "servingLabel": "1 medium",
+    "nutrients": {
+      "protein": 11, "calcium": 70, "magnesium": 25, "zinc": 1.1, "iron": 4.2, "vitaminE": 0.2,
+      "thiamine": 0.5, "riboflavin": 0.3, "niacin": 4.5, "pantothenicAcid": 0.4, "vitaminB6": 0.06,
+      "biotin": 3, "folate": 130, "choline": 20, "selenium": 30, "copper": 130, "manganese": 0.6,
+      "potassium": 90, "phosphorus": 110, "molybdenum": 15
+    }
+  },
+  {
+    "id": "tortilla",
+    "name": "Flour tortilla",
+    "emoji": "🌯",
+    "servingLabel": "1 medium",
+    "nutrients": {
+      "protein": 4, "calcium": 90, "magnesium": 12, "zinc": 0.4, "iron": 1.6, "thiamine": 0.3,
+      "riboflavin": 0.15, "niacin": 2, "vitaminB6": 0.02, "folate": 60, "choline": 6, "selenium": 9,
+      "copper": 60, "manganese": 0.3, "potassium": 60, "phosphorus": 80, "molybdenum": 8
+    }
+  },
+  {
+    "id": "pita",
+    "name": "Whole-wheat pita",
+    "emoji": "🫓",
+    "servingLabel": "1 large",
+    "nutrients": {
+      "protein": 6, "calcium": 10, "magnesium": 44, "zinc": 1, "iron": 1.9, "vitaminE": 0.5,
+      "thiamine": 0.2, "riboflavin": 0.05, "niacin": 1.8, "pantothenicAcid": 0.4, "vitaminB6": 0.2,
+      "biotin": 3, "folate": 20, "choline": 15, "selenium": 25, "copper": 160, "manganese": 1.6,
+      "potassium": 110, "phosphorus": 115, "molybdenum": 15
+    }
+  },
+  {
+    "id": "couscous",
+    "name": "Couscous",
+    "emoji": "🍲",
+    "servingLabel": "1 cup cooked (157 g)",
+    "nutrients": {
+      "protein": 6, "calcium": 13, "magnesium": 13, "zinc": 0.4, "iron": 0.6, "thiamine": 0.1,
+      "riboflavin": 0.04, "niacin": 2, "pantothenicAcid": 0.4, "vitaminB6": 0.08, "folate": 24,
+      "choline": 8, "selenium": 43, "copper": 100, "manganese": 0.1, "potassium": 91,
+      "phosphorus": 35, "molybdenum": 18
+    }
+  },
+  {
+    "id": "barley",
+    "name": "Barley",
+    "emoji": "🌾",
+    "servingLabel": "1 cup cooked (157 g)",
+    "nutrients": {
+      "protein": 3.6, "calcium": 17, "magnesium": 35, "zinc": 1.3, "iron": 2.1, "vitaminE": 0.02,
+      "thiamine": 0.13, "riboflavin": 0.1, "niacin": 3.2, "pantothenicAcid": 0.2, "vitaminB6": 0.18,
+      "biotin": 3, "folate": 25, "choline": 14, "selenium": 13, "copper": 170, "manganese": 0.4,
+      "potassium": 146, "phosphorus": 85, "molybdenum": 15
+    }
+  },
+  {
+    "id": "pancakes",
+    "name": "Pancakes",
+    "emoji": "🥞",
+    "servingLabel": "2 medium",
+    "nutrients": {
+      "protein": 6, "vitaminD": 0.6, "calcium": 180, "magnesium": 16, "zinc": 0.6, "iron": 1.8,
+      "vitaminA": 40, "thiamine": 0.2, "riboflavin": 0.3, "niacin": 1.8, "pantothenicAcid": 0.4,
+      "vitaminB6": 0.05, "biotin": 4, "folate": 50, "vitaminB12": 0.2, "choline": 30,
+      "selenium": 12, "copper": 60, "manganese": 0.2, "potassium": 130, "phosphorus": 250
+    }
+  },
+  {
+    "id": "granola-bar",
+    "name": "Granola bar",
+    "emoji": "🍫",
+    "servingLabel": "1 bar",
+    "nutrients": {
+      "protein": 4, "calcium": 60, "magnesium": 35, "zinc": 0.8, "omega3": 0.05, "iron": 1.2,
+      "vitaminE": 1.5, "thiamine": 0.1, "riboflavin": 0.05, "niacin": 0.6, "vitaminB6": 0.04,
+      "biotin": 4, "folate": 12, "choline": 8, "selenium": 4, "copper": 120, "manganese": 0.7,
+      "potassium": 130, "phosphorus": 100, "molybdenum": 8
+    }
+  },
+  {
+    "id": "popcorn",
+    "name": "Popcorn",
+    "emoji": "🍿",
+    "servingLabel": "3 cups popped",
+    "nutrients": {
+      "protein": 3, "calcium": 2, "magnesium": 36, "zinc": 0.9, "iron": 0.9, "vitaminE": 0.1,
+      "thiamine": 0.03, "riboflavin": 0.02, "niacin": 0.6, "vitaminB6": 0.05, "folate": 7,
+      "choline": 6, "selenium": 2, "copper": 80, "manganese": 0.3, "potassium": 90,
+      "phosphorus": 90, "molybdenum": 6
+    }
+  },
+  {
+    "id": "apple",
+    "name": "Apple",
+    "emoji": "🍎",
+    "servingLabel": "1 medium",
+    "nutrients": {
+      "protein": 0.5, "calcium": 11, "magnesium": 9, "zinc": 0.07, "iron": 0.2, "vitaminA": 6,
+      "vitaminC": 8.4, "vitaminE": 0.3, "vitaminK": 4, "thiamine": 0.03, "riboflavin": 0.05,
+      "niacin": 0.2, "pantothenicAcid": 0.1, "vitaminB6": 0.08, "folate": 5, "choline": 6,
+      "selenium": 0.1, "copper": 50, "manganese": 0.06, "potassium": 195, "phosphorus": 20
+    }
+  },
+  {
+    "id": "grapes",
+    "name": "Grapes",
+    "emoji": "🍇",
+    "servingLabel": "1 cup (151 g)",
+    "nutrients": {
+      "protein": 1.1, "calcium": 15, "magnesium": 11, "zinc": 0.1, "iron": 0.5, "vitaminA": 5,
+      "vitaminC": 5, "vitaminE": 0.3, "vitaminK": 22, "thiamine": 0.1, "riboflavin": 0.1,
+      "niacin": 0.3, "pantothenicAcid": 0.08, "vitaminB6": 0.13, "folate": 3, "choline": 8,
+      "selenium": 0.2, "copper": 190, "manganese": 0.1, "potassium": 288, "phosphorus": 30
+    }
+  },
+  {
+    "id": "blueberries",
+    "name": "Blueberries",
+    "emoji": "🫐",
+    "servingLabel": "1 cup (148 g)",
+    "nutrients": {
+      "protein": 1.1, "calcium": 9, "magnesium": 9, "zinc": 0.2, "iron": 0.4, "vitaminA": 4,
+      "vitaminC": 14, "vitaminE": 0.8, "vitaminK": 29, "thiamine": 0.05, "riboflavin": 0.06,
+      "niacin": 0.6, "pantothenicAcid": 0.2, "vitaminB6": 0.08, "folate": 9, "choline": 9,
+      "selenium": 0.1, "copper": 80, "manganese": 0.5, "potassium": 114, "phosphorus": 18
+    }
+  },
+  {
+    "id": "mango",
+    "name": "Mango",
+    "emoji": "🥭",
+    "servingLabel": "1 cup (165 g)",
+    "nutrients": {
+      "protein": 1.4, "calcium": 18, "magnesium": 16, "zinc": 0.15, "iron": 0.3, "vitaminA": 89,
+      "vitaminC": 60, "vitaminE": 1.5, "vitaminK": 6.9, "thiamine": 0.05, "riboflavin": 0.06,
+      "niacin": 1.1, "pantothenicAcid": 0.4, "vitaminB6": 0.2, "folate": 71, "choline": 12,
+      "selenium": 1, "copper": 180, "manganese": 0.1, "potassium": 277, "phosphorus": 23
+    }
+  },
+  {
+    "id": "pineapple",
+    "name": "Pineapple",
+    "emoji": "🍍",
+    "servingLabel": "1 cup (165 g)",
+    "nutrients": {
+      "protein": 0.9, "calcium": 21, "magnesium": 20, "zinc": 0.2, "iron": 0.5, "vitaminA": 5,
+      "vitaminC": 79, "vitaminE": 0.03, "vitaminK": 1.2, "thiamine": 0.13, "riboflavin": 0.05,
+      "niacin": 0.8, "pantothenicAcid": 0.4, "vitaminB6": 0.18, "folate": 30, "choline": 9,
+      "selenium": 0.2, "copper": 180, "manganese": 1.5, "potassium": 180, "phosphorus": 13
+    }
+  },
+  {
+    "id": "watermelon",
+    "name": "Watermelon",
+    "emoji": "🍉",
+    "servingLabel": "1 cup (152 g)",
+    "nutrients": {
+      "protein": 0.9, "calcium": 11, "magnesium": 15, "zinc": 0.15, "iron": 0.4, "vitaminA": 43,
+      "vitaminC": 12, "vitaminE": 0.1, "thiamine": 0.05, "riboflavin": 0.03, "niacin": 0.3,
+      "pantothenicAcid": 0.3, "vitaminB6": 0.07, "folate": 5, "choline": 6, "selenium": 0.6,
+      "copper": 60, "manganese": 0.06, "potassium": 170, "phosphorus": 17
+    }
+  },
+  {
+    "id": "kiwi",
+    "name": "Kiwi",
+    "emoji": "🥝",
+    "servingLabel": "1 medium",
+    "nutrients": {
+      "protein": 0.8, "calcium": 26, "magnesium": 12, "zinc": 0.1, "iron": 0.2, "vitaminA": 3,
+      "vitaminC": 64, "vitaminE": 1, "vitaminK": 27.8, "thiamine": 0.02, "riboflavin": 0.02,
+      "niacin": 0.2, "pantothenicAcid": 0.1, "vitaminB6": 0.05, "folate": 17, "choline": 5,
+      "selenium": 0.2, "copper": 80, "manganese": 0.06, "potassium": 215, "phosphorus": 26
+    }
+  },
+  {
+    "id": "raisins",
+    "name": "Raisins",
+    "emoji": "🍇",
+    "servingLabel": "1/4 cup (40 g)",
+    "nutrients": {
+      "protein": 1.2, "calcium": 22, "magnesium": 12, "zinc": 0.1, "iron": 0.8, "vitaminC": 1,
+      "vitaminE": 0.05, "vitaminK": 1.4, "thiamine": 0.04, "riboflavin": 0.05, "niacin": 0.3,
+      "pantothenicAcid": 0.04, "vitaminB6": 0.1, "folate": 2, "choline": 4, "selenium": 0.3,
+      "copper": 100, "manganese": 0.1, "potassium": 310, "phosphorus": 40
+    }
+  },
+  {
+    "id": "dates",
+    "name": "Dates",
+    "emoji": "🌴",
+    "servingLabel": "3 medjool dates",
+    "nutrients": {
+      "protein": 0.7, "calcium": 12, "magnesium": 13, "zinc": 0.1, "iron": 0.3, "vitaminA": 2,
+      "vitaminK": 0.6, "thiamine": 0.01, "riboflavin": 0.03, "niacin": 0.5, "pantothenicAcid": 0.3,
+      "vitaminB6": 0.05, "folate": 5, "choline": 3, "selenium": 0.2, "copper": 60,
+      "manganese": 0.1, "potassium": 200, "phosphorus": 16
+    }
+  },
+  {
+    "id": "carrots",
+    "name": "Carrots",
+    "emoji": "🥕",
+    "servingLabel": "1 cup chopped (128 g)",
+    "nutrients": {
+      "protein": 1.2, "calcium": 42, "magnesium": 15, "zinc": 0.3, "iron": 0.4, "vitaminA": 1070,
+      "vitaminC": 7, "vitaminE": 0.8, "vitaminK": 16, "thiamine": 0.08, "riboflavin": 0.07,
+      "niacin": 1.2, "pantothenicAcid": 0.4, "vitaminB6": 0.17, "biotin": 2, "folate": 24,
+      "choline": 11, "selenium": 0.1, "copper": 60, "manganese": 0.17, "potassium": 410,
+      "phosphorus": 45, "molybdenum": 3
+    }
+  },
+  {
+    "id": "tomato",
+    "name": "Tomato",
+    "emoji": "🍅",
+    "servingLabel": "1 medium",
+    "nutrients": {
+      "protein": 1.1, "calcium": 12, "magnesium": 14, "zinc": 0.2, "iron": 0.3, "vitaminA": 51,
+      "vitaminC": 16, "vitaminE": 0.7, "vitaminK": 8, "thiamine": 0.05, "riboflavin": 0.02,
+      "niacin": 0.7, "pantothenicAcid": 0.1, "vitaminB6": 0.1, "biotin": 1, "folate": 18,
+      "choline": 8, "selenium": 0.1, "copper": 70, "manganese": 0.14, "potassium": 292,
+      "phosphorus": 30
+    }
+  },
+  {
+    "id": "corn",
+    "name": "Sweetcorn",
+    "emoji": "🌽",
+    "servingLabel": "1 cup (164 g)",
+    "nutrients": {
+      "protein": 5, "calcium": 5, "magnesium": 44, "zinc": 0.9, "iron": 0.8, "vitaminA": 15,
+      "vitaminC": 10, "vitaminE": 0.15, "vitaminK": 0.5, "thiamine": 0.2, "riboflavin": 0.1,
+      "niacin": 2.6, "pantothenicAcid": 1.4, "vitaminB6": 0.14, "biotin": 3, "folate": 76,
+      "choline": 40, "selenium": 1.5, "copper": 90, "manganese": 0.2, "potassium": 392,
+      "phosphorus": 125, "molybdenum": 8
+    }
+  },
+  {
+    "id": "peas",
+    "name": "Green peas",
+    "emoji": "🫛",
+    "servingLabel": "1 cup (160 g)",
+    "nutrients": {
+      "protein": 8.6, "calcium": 43, "magnesium": 62, "zinc": 1.9, "omega3": 0.05, "iron": 2.5,
+      "vitaminA": 64, "vitaminC": 23, "vitaminE": 0.2, "vitaminK": 41, "thiamine": 0.4,
+      "riboflavin": 0.2, "niacin": 3.2, "pantothenicAcid": 0.2, "vitaminB6": 0.35, "biotin": 3,
+      "folate": 101, "choline": 47, "selenium": 2.8, "copper": 280, "manganese": 0.8,
+      "potassium": 434, "phosphorus": 187, "molybdenum": 60
+    }
+  },
+  {
+    "id": "green-beans",
+    "name": "Green beans",
+    "emoji": "🫛",
+    "servingLabel": "1 cup cooked (125 g)",
+    "nutrients": {
+      "protein": 2.4, "calcium": 55, "magnesium": 32, "zinc": 0.5, "iron": 1.6, "vitaminA": 44,
+      "vitaminC": 12, "vitaminE": 0.6, "vitaminK": 60, "thiamine": 0.1, "riboflavin": 0.12,
+      "niacin": 0.8, "pantothenicAcid": 0.2, "vitaminB6": 0.06, "biotin": 2, "folate": 42,
+      "choline": 20, "selenium": 0.7, "copper": 70, "manganese": 0.4, "potassium": 260,
+      "phosphorus": 36
+    }
+  },
+  {
+    "id": "cauliflower",
+    "name": "Cauliflower",
+    "emoji": "🥦",
+    "servingLabel": "1 cup cooked (124 g)",
+    "nutrients": {
+      "protein": 2.3, "calcium": 20, "magnesium": 11, "zinc": 0.2, "iron": 0.4, "vitaminC": 55,
+      "vitaminE": 0.1, "vitaminK": 17, "thiamine": 0.05, "riboflavin": 0.06, "niacin": 0.5,
+      "pantothenicAcid": 0.6, "vitaminB6": 0.2, "biotin": 2, "folate": 57, "choline": 47,
+      "selenium": 0.7, "copper": 40, "manganese": 0.2, "potassium": 320, "phosphorus": 40,
+      "molybdenum": 6
+    }
+  },
+  {
+    "id": "brussels-sprouts",
+    "name": "Brussels sprouts",
+    "emoji": "🥬",
+    "servingLabel": "1 cup cooked (156 g)",
+    "nutrients": {
+      "protein": 4, "calcium": 56, "magnesium": 31, "zinc": 0.5, "omega3": 0.27, "iron": 1.9,
+      "vitaminA": 60, "vitaminC": 97, "vitaminE": 0.7, "vitaminK": 219, "thiamine": 0.16,
+      "riboflavin": 0.12, "niacin": 0.9, "pantothenicAcid": 0.5, "vitaminB6": 0.28, "biotin": 2,
+      "folate": 94, "choline": 63, "selenium": 2.2, "copper": 130, "manganese": 0.4,
+      "potassium": 495, "phosphorus": 87, "molybdenum": 8
+    }
+  },
+  {
+    "id": "asparagus",
+    "name": "Asparagus",
+    "emoji": "🥬",
+    "servingLabel": "1 cup cooked (180 g)",
+    "nutrients": {
+      "protein": 4.3, "calcium": 41, "magnesium": 25, "zinc": 1.1, "iron": 2.9, "vitaminA": 90,
+      "vitaminC": 13.8, "vitaminE": 2.7, "vitaminK": 91, "thiamine": 0.3, "riboflavin": 0.2,
+      "niacin": 1.9, "pantothenicAcid": 0.4, "vitaminB6": 0.2, "biotin": 2, "folate": 268,
+      "choline": 47, "selenium": 11, "copper": 300, "manganese": 0.3, "potassium": 400,
+      "phosphorus": 97, "molybdenum": 10
+    }
+  },
+  {
+    "id": "mushrooms",
+    "name": "Mushrooms",
+    "emoji": "🍄",
+    "servingLabel": "1 cup (70 g)",
+    "nutrients": {
+      "protein": 2.2, "vitaminD": 0.1, "calcium": 2, "magnesium": 6, "zinc": 0.4, "iron": 0.4,
+      "vitaminC": 1.4, "thiamine": 0.06, "riboflavin": 0.3, "niacin": 2.5, "pantothenicAcid": 1,
+      "vitaminB6": 0.07, "biotin": 5, "folate": 12, "choline": 12, "selenium": 6.5, "copper": 220,
+      "manganese": 0.03, "potassium": 223, "phosphorus": 60, "molybdenum": 3
+    }
+  },
+  {
+    "id": "dark-chocolate",
+    "name": "Dark chocolate",
+    "emoji": "🍫",
+    "servingLabel": "28 g (70–85%)",
+    "nutrients": {
+      "protein": 2.2, "calcium": 20, "magnesium": 65, "zinc": 0.9, "iron": 3.4, "vitaminE": 0.15,
+      "vitaminK": 2.2, "thiamine": 0.01, "riboflavin": 0.02, "niacin": 0.3,
+      "pantothenicAcid": 0.1, "vitaminB6": 0.01, "folate": 4, "choline": 3, "selenium": 1.3,
+      "copper": 500, "manganese": 0.5, "potassium": 205, "phosphorus": 87, "molybdenum": 3
+    }
+  },
+  {
+    "id": "olive-oil",
+    "name": "Olive oil",
+    "emoji": "🫒",
+    "servingLabel": "1 tbsp",
+    "nutrients": { "vitaminE": 1.9, "vitaminK": 8, "iron": 0.08 }
+  },
+  {
+    "id": "orange-juice",
+    "name": "Orange juice",
+    "emoji": "🧃",
+    "servingLabel": "1 cup (248 g)",
+    "nutrients": {
+      "protein": 1.7, "calcium": 27, "magnesium": 27, "zinc": 0.1, "iron": 0.5, "vitaminA": 10,
+      "vitaminC": 124, "vitaminE": 0.1, "thiamine": 0.2, "riboflavin": 0.07, "niacin": 0.5,
+      "pantothenicAcid": 0.4, "vitaminB6": 0.1, "folate": 74, "choline": 17, "selenium": 0.2,
+      "copper": 110, "manganese": 0.1, "potassium": 496, "phosphorus": 42
+    }
+  },
+  {
+    "id": "coconut-water",
+    "name": "Coconut water",
+    "emoji": "🥥",
+    "servingLabel": "1 cup (240 ml)",
+    "nutrients": {
+      "protein": 1.7, "calcium": 58, "magnesium": 60, "zinc": 0.3, "iron": 0.7, "vitaminC": 5.8,
+      "thiamine": 0.07, "riboflavin": 0.14, "niacin": 0.2, "pantothenicAcid": 0.1,
+      "vitaminB6": 0.08, "folate": 7, "choline": 6, "selenium": 2.4, "copper": 100,
+      "manganese": 0.5, "potassium": 600, "phosphorus": 48
+    }
+  },
+  {
     "id": "creatine-monohydrate",
     "name": "Creatine monohydrate",
     "emoji": "🥄",

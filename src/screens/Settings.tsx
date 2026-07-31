@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Disclaimer from '../components/Disclaimer';
+import { loadApiKey, saveApiKey } from '../lib/aiLookup';
 import {
   PROTEIN_MULTIPLIER_DEFAULT,
   PROTEIN_MULTIPLIER_LIFTING_DEFAULT,
@@ -217,6 +218,8 @@ export default function Settings() {
         )}
       </section>
 
+      <AiLookupSettings />
+
       <section className="card space-y-3">
         <h3 className="section-title">Data</h3>
         <button type="button" onClick={downloadCsv} className="btn btn-ghost w-full">
@@ -261,5 +264,67 @@ export default function Settings() {
 
       <Disclaimer />
     </div>
+  );
+}
+
+/**
+ * The AI food lookup calls Anthropic directly from this device with the user's own key.
+ * Nothing is proxied through a server, so the key never leaves the browser except in the
+ * request to Anthropic itself.
+ */
+function AiLookupSettings() {
+  const [key, setKey] = useState(() => loadApiKey());
+  const [saved, setSaved] = useState(false);
+
+  const commit = (value: string) => {
+    setKey(value);
+    saveApiKey(value);
+    setSaved(true);
+    window.setTimeout(() => setSaved(false), 1500);
+  };
+
+  return (
+    <section className="card space-y-3">
+      <h3 className="section-title">AI food lookup</h3>
+      <p className="text-xs text-slate-500 dark:text-slate-400">
+        Lets you type any food or drink and have Claude estimate its nutrients. Paste an Anthropic
+        API key from{' '}
+        <span className="font-medium text-slate-600 dark:text-slate-300">
+          console.anthropic.com
+        </span>
+        . Usage is billed to your own account.
+      </p>
+
+      <label className="block">
+        <span className="text-xs text-slate-500 dark:text-slate-400">API key</span>
+        <input
+          type="password"
+          value={key}
+          onChange={(e) => setKey(e.target.value)}
+          onBlur={(e) => commit(e.target.value)}
+          placeholder="sk-ant-…"
+          autoComplete="off"
+          spellCheck={false}
+          className="field mt-1 font-mono text-sm"
+        />
+      </label>
+
+      <div className="flex gap-2">
+        <button type="button" onClick={() => commit(key)} className="btn btn-primary flex-1">
+          {saved ? 'Saved ✓' : 'Save key'}
+        </button>
+        {key && (
+          <button type="button" onClick={() => commit('')} className="btn btn-ghost">
+            Remove
+          </button>
+        )}
+      </div>
+
+      <p className="text-xs text-slate-400 dark:text-slate-500">
+        The key is stored on this device and sent only to Anthropic. Anyone who can use this browser
+        profile can use the key, so don't add one on a shared computer. Lookup needs an internet
+        connection — the rest of the app keeps working offline without it.
+      </p>
+    </section>
   );
 }
